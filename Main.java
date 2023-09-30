@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 
 /*AUTHOR Simran Kaur
  *ID 24297718
@@ -28,10 +27,9 @@ public class Main {
         int line_index = 1;
 
         String unit_title = null;
-        ArrayList<String[] > students = new ArrayList<>();
 
         try {
-            //parsing the excel CSV file into BufferedReader class constructor
+            //parsing the Excel CSV file into BufferedReader class constructor
             BufferedReader br = new BufferedReader(new FileReader(FILE_NAME));
 
 
@@ -66,15 +64,21 @@ public class Main {
                 } else if (line_index > 2) { // check if the line index is at the student data lines
 
                     //create a student class
+                    Student student1 = new Student(student[1],
+                            student[0],
+                            student[2],
+                            Double.parseDouble(student[3]),
+                            Double.parseDouble(student[4]),
+                            Double.parseDouble(student[5]));
 
 
                     //concatenate the student data  to a string
-                    String student_results = "Student [" + student[0] +
-                            ", " + student[1] +
-                            ", " +  student[2] +
-                            ", [" +  student[3] + ", " +
-                            " " + student[4] + "," +
-                            "  " + student[5] + "] ]";
+                    String student_results = "Student [" + student1.getFirstName() +
+                            ", " + student1.getLastName() +
+                            ", " +  student1.getStudentID() +
+                            ", [" +  student1.studentMarks.getAssignment1() + ", " +
+                            " " + student1.studentMarks.getAssignment2() + "," +
+                            "  " + student1.studentMarks.getAssignment3() + "] ]";
 
 
                     //print student details on command line
@@ -92,6 +96,7 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
 
     }
 }
