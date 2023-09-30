@@ -3,8 +3,10 @@ import java.util.ArrayList;
 /*AUTHOR Simran Kaur
  *ID 24297718
  */
-public class Unit extends  StudentsBelowThreshold {
+public class Unit extends  StudentsBelowThreshold { //make the unit class extent the StudentsBelowThreshold abstract class
     String unit_title = "";
+
+    //array list of student object class
     ArrayList<Student> students;
 
     public Unit(String unit_title, ArrayList<Student> students) {
@@ -29,6 +31,8 @@ public class Unit extends  StudentsBelowThreshold {
     }
 
 
+
+    //override the StudentBelowThreshold class
     @Override
     public ArrayList<Student> getMarksBelowThreshold(double threshold, ArrayList<Student> students) {
         return super.getMarksBelowThreshold(threshold, students);
