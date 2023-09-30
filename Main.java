@@ -12,98 +12,41 @@ public class Main {
     //set file path for the excel file
     static String FILE_NAME = "./prog5001_students_grade_2022.csv";
 
-    public static void main(String [] args){
+    public static void main(String[] args) {
 
         //read excel file
-   Unit unit =  readExcelFile();
+        Unit unit = readExcelFile();
 
-   //get the students list with their total marks
-   ArrayList<Student> students = unit.getStudents();
+        //get the students list with their total marks
+        ArrayList<Student> students = unit.getStudents();
+        printStudents( students);
 
-        for (Student student1 :students ) {
-            //concatenate the student data  to a string
-            String student_results = "Student [" + student1.getFirstName() +
-                    ", " + student1.getLastName() +
-                    ", " +  student1.getStudentID() +
-                    ", [" +  student1.studentMarks.getAssignment1() + ", " +
-                    " " + student1.studentMarks.getAssignment2() + "," +
-                    "  " + student1.studentMarks.getAssignment3() + "] Total = "+ student1.studentMarks.getTotalMarks()+" ]";
-            //print student details on command line
-            System.out.println(student_results);
-        }
 
 
         //Get the students below threshold mark
         int threshold_mark = getThresholdMark();
 
-        ArrayList<Student> studentsBelowThreshold = unit.getMarksBelowThreshold(threshold_mark,students);
-        System.out.println("+++++++++++++++++++++++++++++++++++");
-        System.out.println("Students Below Threshold");
-        if(studentsBelowThreshold.size() > 0) {
-            for (Student student1 : studentsBelowThreshold) {
-                //concatenate the student data  to a string
-                String student_results = "Student  [" + student1.getFirstName() +
-                        ", " + student1.getLastName() +
-                        ", " + student1.getStudentID() +
-                        ", [" + student1.studentMarks.getAssignment1() + ", " +
-                        " " + student1.studentMarks.getAssignment2() + "," +
-                        "  " + student1.studentMarks.getAssignment3() + "] Total = " + student1.studentMarks.getTotalMarks() + " ]";
-                //print student details on command line
-                System.out.println(student_results);
-            }
-
-        }else{
-            System.out.println("No Student Below Threshold");
-        }
+        ArrayList<Student> studentsBelowThreshold = unit.getMarksBelowThreshold(threshold_mark, students);
+        printStudentBelowThreshold(studentsBelowThreshold);
 
 
         //getting top 5 performing students
         ArrayList<Student> top5Students = unit.getTop5Students(students);
-        System.out.println("\n\n+++++++++++++++++++++++++++++++++++\n");
-        System.out.println("top 5 Students ");
-        if(top5Students.size() > 0) {
-            for (Student student1 : top5Students) {
-                //concatenate the student data  to a string
-                String student_results = "Student  [" + student1.getFirstName() +
-                        ", " + student1.getLastName() +
-                        ", " + student1.getStudentID() +
-                        ", [" + student1.studentMarks.getAssignment1() + ", " +
-                        " " + student1.studentMarks.getAssignment2() + "," +
-                        "  " + student1.studentMarks.getAssignment3() + "] Total = " + student1.studentMarks.getTotalMarks() + " ]";
-                //print student details on command line
-                System.out.println(student_results);
-            }
+        printTop5Students(top5Students);
 
-        }else{
-            System.out.println("No top 5 students");
-        }
 
         //getting top 5 performing students
         ArrayList<Student> bottom5Students = unit.getBottom5Students(students);
-        System.out.println("\n\n+++++++++++++++++++++++++++++++++++\n");
-        System.out.println("bottom 5 Students ");
-
-        //loop through the bottom 5 students
-        if(bottom5Students.size() > 0) {
-            for (Student student1 : bottom5Students) {
-                //concatenate the student data  to a string
-                String student_results = "Student  [" + student1.getFirstName() +
-                        ", " + student1.getLastName() +
-                        ", " + student1.getStudentID() +
-                        ", [" + student1.studentMarks.getAssignment1() + ", " +
-                        " " + student1.studentMarks.getAssignment2() + "," +
-                        "  " + student1.studentMarks.getAssignment3() + "] Total = " + student1.studentMarks.getTotalMarks() + " ]";
-                //print student details on command line
-                System.out.println(student_results);
-            }
-
-        }else{
-            System.out.println("No bottom 5 students");
-        }
+        printBottom5Students(bottom5Students);
 
 
     }
 
+
+
+//@TODO SET  MENU TO GET USER INPUT FOR MENU
+
+    //GET THRESHOLD MARK FROM USER INPUT
     public static int getThresholdMark() {
         int user_input = 0;
         try {
@@ -116,13 +59,105 @@ public class Main {
             Scanner sc = new Scanner(System.in);
             user_input = sc.nextInt();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             getThresholdMark();
         }
         return user_input;
     }
 
+
+
+   // print students
+    public static void printStudents( ArrayList<Student> students) {
+        for (Student student1 : students) {
+            //concatenate the student data  to a string
+            String student_results = "Student [" + student1.getFirstName() +
+                    ", " + student1.getLastName() +
+                    ", " + student1.getStudentID() +
+                    ", [" + student1.studentMarks.getAssignment1() + ", " +
+                    " " + student1.studentMarks.getAssignment2() + "," +
+                    "  " + student1.studentMarks.getAssignment3() + "] Total = " + student1.studentMarks.getTotalMarks() + " ]";
+            //print student details on command line
+            System.out.println(student_results);
+        }
+
+    }
+
+    //print Students Below Threshold
+    public static void printStudentBelowThreshold(ArrayList<Student> studentsBelowThreshold){
+        System.out.println("+++++++++++++++++++++++++++++++++++");
+        System.out.println("Students Below Threshold");
+        if (studentsBelowThreshold.size() > 0) {
+            for (Student student1 : studentsBelowThreshold) {
+                //concatenate the student data  to a string
+                String student_results = "Student  [" + student1.getFirstName() +
+                        ", " + student1.getLastName() +
+                        ", " + student1.getStudentID() +
+                        ", [" + student1.studentMarks.getAssignment1() + ", " +
+                        " " + student1.studentMarks.getAssignment2() + "," +
+                        "  " + student1.studentMarks.getAssignment3() + "] Total = " + student1.studentMarks.getTotalMarks() + " ]";
+                //print student details on command line
+                System.out.println(student_results);
+            }
+
+        } else {
+            System.out.println("No Student Below Threshold");
+        }
+    }
+
+
+   // print top 5 Students
+    public static void printTop5Students(ArrayList<Student> top5Students) {
+        System.out.println("\n\n+++++++++++++++++++++++++++++++++++\n");
+        System.out.println("top 5 Students ");
+        if (top5Students.size() > 0) {
+            for (Student student1 : top5Students) {
+                //concatenate the student data  to a string
+                String student_results = "Student  [" + student1.getFirstName() +
+                        ", " + student1.getLastName() +
+                        ", " + student1.getStudentID() +
+                        ", [" + student1.studentMarks.getAssignment1() + ", " +
+                        " " + student1.studentMarks.getAssignment2() + "," +
+                        "  " + student1.studentMarks.getAssignment3() + "] Total = " + student1.studentMarks.getTotalMarks() + " ]";
+                //print student details on command line
+                System.out.println(student_results);
+            }
+
+        } else {
+            System.out.println("No top 5 students");
+        }
+    }
+
+
+
+    //print bottom 5 Students
+    private static void printBottom5Students(ArrayList<Student> bottom5Students) {
+        System.out.println("\n\n+++++++++++++++++++++++++++++++++++\n");
+        System.out.println("bottom 5 Students ");
+
+        //loop through the bottom 5 students
+        if (bottom5Students.size() > 0) {
+            for (Student student1 : bottom5Students) {
+                //concatenate the student data  to a string
+                String student_results = "Student  [" + student1.getFirstName() +
+                        ", " + student1.getLastName() +
+                        ", " + student1.getStudentID() +
+                        ", [" + student1.studentMarks.getAssignment1() + ", " +
+                        " " + student1.studentMarks.getAssignment2() + "," +
+                        "  " + student1.studentMarks.getAssignment3() + "] Total = " + student1.studentMarks.getTotalMarks() + " ]";
+                //print student details on command line
+                System.out.println(student_results);
+            }
+
+        } else {
+            System.out.println("No bottom 5 students");
+        }
+    }
+
+
+
+    //read  excel file
     public static Unit readExcelFile() {
 
         //set the line separator
@@ -195,8 +230,8 @@ public class Main {
             e.printStackTrace();
         }
 
-        unit = new Unit(unit_title,students);
+        unit = new Unit(unit_title, students);
 
-        return  unit;
+        return unit;
     }
 }
