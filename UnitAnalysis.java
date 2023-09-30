@@ -61,4 +61,39 @@ abstract class UnitAnalysis {
         return top_5_students;
     }
 
+
+    //get the bottom 5 lowest performing students
+    public  ArrayList<Student> getBottom5Students(ArrayList<Student> students) {
+
+        ArrayList<Student> bottom_5_students = new ArrayList<>();
+        // The sort method.
+        Student temp;
+
+        //for loop to get a student and the next student and compare and swap them
+        for (int i = 0; i < students.size(); i++) {
+            for (int j = i + 1; j < students.size(); j++) {
+                if (students.get(i).studentMarks.getTotalMarks() <(students.get(j).studentMarks.getTotalMarks())) {
+                    temp = students.get(i);
+                    students.set(i, students.get(j));
+                    students.set(j, temp);
+                }
+            }
+
+        }
+
+        //set loop five counts below the student size to get the bottom 5 students
+        int count = students.size() - 5;
+
+        //loop through the ordered list of students
+        for (int i = count; i < students.size(); i++) {
+
+            //add the bottom students to the bottom_5_students array list
+            bottom_5_students.add(students.get(i));
+
+        }
+
+        //return the list of bottom 5 lowest performing student
+        return bottom_5_students;
+    }
+
 }
