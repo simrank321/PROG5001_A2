@@ -4,9 +4,8 @@ import java.util.ArrayList;
  *ID 24297718
  */
 public class Unit extends UnitAnalysis { //make the unit class extent the StudentsBelowThreshold abstract class
-    String unit_title = "";
 
-    //array list of student object class
+    String unit_title = "";
     ArrayList<Student> students;
 
     public Unit(String unit_title, ArrayList<Student> students) {
@@ -30,9 +29,8 @@ public class Unit extends UnitAnalysis { //make the unit class extent the Studen
         this.students = students;
     }
 
-
-
     //override the getMarksBelowThreshold method from UnitAnalysis class
+
     @Override
     public ArrayList<Student> getMarksBelowThreshold(double threshold, ArrayList<Student> students) {
         return super.getMarksBelowThreshold(threshold, students);
