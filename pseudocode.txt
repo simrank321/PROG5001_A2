@@ -1,0 +1,29 @@
+/*AUTHOR Simran Kaur
+ *ID 24297718
+ */
+
+=======================================================================
+Algorithm - Get Students below a certain threshhold based on the total marks
+Description : - Get a list of students who are below a certain threshold by considering the total marks of the students.
+Assumption : - We have an array of student total marks and a threshold mark
+
+function getStudentsBelowThreshold():
+threshold, students
+// make an empty array to store the students below the threshold
+    students_below_threshold= []
+
+//loop through total marks results
+    for i from 0 to length(students) - 1:
+
+    //check if the student's total mark is below the threshold
+        if (students[i].students_total_marks < threshold):
+
+       // if the mark is below the threshold push it into the students below_cutmark array
+            add students[i] to students_below_threshold
+        end if
+    // end the loop
+    end for loop
+
+
+//return the students below threshold mark array
+    return students_below_threshold

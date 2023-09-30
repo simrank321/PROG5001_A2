@@ -44,8 +44,4 @@ public class StudentMarks{
         this.assignment_3 = assignment_3;
     }
 
-    public double calculateTotalMarks(){
-        this.total_marks  =  this.assignment_1 + this.assignment_2+ this.assignment_3;
-        return  this.total_marks;
-    }
 }
