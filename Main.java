@@ -91,7 +91,7 @@ public class Main {
                             Double.parseDouble(student[3]),
                             Double.parseDouble(student[4]),
                             Double.parseDouble(student[5]));
-                    student1.studentMarks.calculateTotalMarks();
+                    student1.studentMarks.setTotalMarks();
                     students.add(student1);
 
                 } else {
