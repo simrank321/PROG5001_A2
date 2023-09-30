@@ -29,8 +29,25 @@ public class Main {
             System.out.println(student_results);
         }
 
+        ArrayList<Student> studentsBelowThreshold = unit.getMarksBelowThreshold(40,students);
+        System.out.println("+++++++++++++++++++++++++++++++++++");
+        System.out.println("Students Below Threshold");
+        if(studentsBelowThreshold.size() > 0) {
+            for (Student student1 : studentsBelowThreshold) {
+                //concatenate the student data  to a string
+                String student_results = "Student  [" + student1.getFirstName() +
+                        ", " + student1.getLastName() +
+                        ", " + student1.getStudentID() +
+                        ", [" + student1.studentMarks.getAssignment1() + ", " +
+                        " " + student1.studentMarks.getAssignment2() + "," +
+                        "  " + student1.studentMarks.getAssignment3() + "] Total = " + student1.studentMarks.getTotalMarks() + " ]";
+                //print student details on command line
+                System.out.println(student_results);
+            }
 
-
+        }else{
+            System.out.println("No Student Below Threshold");
+        }
 
     }
 

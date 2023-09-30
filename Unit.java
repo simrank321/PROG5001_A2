@@ -3,7 +3,7 @@ import java.util.ArrayList;
 /*AUTHOR Simran Kaur
  *ID 24297718
  */
-public class Unit {
+public class Unit extends  StudentsBelowThreshold {
     String unit_title = "";
     ArrayList<Student> students;
 
@@ -28,5 +28,10 @@ public class Unit {
         this.students = students;
     }
 
+
+    @Override
+    public ArrayList<Student> getMarksBelowThreshold(double threshold, ArrayList<Student> students) {
+        return super.getMarksBelowThreshold(threshold, students);
+    }
 
 }
