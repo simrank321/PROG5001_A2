@@ -15,7 +15,8 @@ public class StudentMarks{
         return total_marks;
     }
 
-    public void setTotalMarks(double total_marks) {
+    public void setTotalMarks() {
+        double total_marks  =  this.assignment_1 + this.assignment_2+ this.assignment_3;
         this.total_marks = total_marks;
     }
 

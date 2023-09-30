@@ -14,6 +14,24 @@ public class Main {
     public static void main(String [] args){
 
    Unit unit =  readExcelFile();
+
+   ArrayList<Student> students = unit.getStudents();
+
+        for (Student student1 :students ) {
+            //concatenate the student data  to a string
+            String student_results = "Student [" + student1.getFirstName() +
+                    ", " + student1.getLastName() +
+                    ", " +  student1.getStudentID() +
+                    ", [" +  student1.studentMarks.getAssignment1() + ", " +
+                    " " + student1.studentMarks.getAssignment2() + "," +
+                    "  " + student1.studentMarks.getAssignment3() + "] Total = "+ student1.studentMarks.getTotalMarks()+" ]";
+            //print student details on command line
+            System.out.println(student_results);
+        }
+
+
+
+
     }
 
     public static Unit readExcelFile() {
@@ -32,7 +50,7 @@ public class Main {
         ArrayList<Student> students = new ArrayList<>();
 
         try {
-            //parsing the excel CSV file into BufferedReader class constructor
+            //parsing the Excel CSV file into BufferedReader class constructor
             BufferedReader br = new BufferedReader(new FileReader(FILE_NAME));
 
 
@@ -73,21 +91,8 @@ public class Main {
                             Double.parseDouble(student[3]),
                             Double.parseDouble(student[4]),
                             Double.parseDouble(student[5]));
-
+                    student1.studentMarks.calculateTotalMarks();
                     students.add(student1);
-
-                    //concatenate the student data  to a string
-                    String student_results = "Student [" + student1.getFirstName() +
-                            ", " + student1.getLastName() +
-                            ", " +  student1.getStudentID() +
-                            ", [" +  student1.studentMarks.getAssignment1() + ", " +
-                            " " + student1.studentMarks.getAssignment2() + "," +
-                            "  " + student1.studentMarks.getAssignment3() + "] ]";
-
-
-                    //print student details on command line
-                    System.out.println(student_results);
-
 
                 } else {
                     //print student  on command line
