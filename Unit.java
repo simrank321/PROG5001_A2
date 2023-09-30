@@ -39,7 +39,12 @@ public class Unit extends UnitAnalysis { //make the unit class extent the Studen
     //override the getTop5Students method UnitAnalysis
     @Override
     public ArrayList<Student> getTop5Students( ArrayList<Student> students) {
-        return super.getTop5Students(this.students);
+        return super.getTop5Students(students);
+    }
+
+    @Override
+    public ArrayList<Student> getBottom5Students( ArrayList<Student> students) {
+        return super.getBottom5Students(students);
     }
 
 }

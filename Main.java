@@ -78,6 +78,29 @@ public class Main {
             System.out.println("No top 5 students");
         }
 
+        //getting top 5 performing students
+        ArrayList<Student> bottom5Students = unit.getBottom5Students(students);
+        System.out.println("\n\n+++++++++++++++++++++++++++++++++++\n");
+        System.out.println("bottom 5 Students ");
+
+        //loop through the bottom 5 students
+        if(bottom5Students.size() > 0) {
+            for (Student student1 : bottom5Students) {
+                //concatenate the student data  to a string
+                String student_results = "Student  [" + student1.getFirstName() +
+                        ", " + student1.getLastName() +
+                        ", " + student1.getStudentID() +
+                        ", [" + student1.studentMarks.getAssignment1() + ", " +
+                        " " + student1.studentMarks.getAssignment2() + "," +
+                        "  " + student1.studentMarks.getAssignment3() + "] Total = " + student1.studentMarks.getTotalMarks() + " ]";
+                //print student details on command line
+                System.out.println(student_results);
+            }
+
+        }else{
+            System.out.println("No bottom 5 students");
+        }
+
 
     }
 
