@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /*AUTHOR Simran Kaur
  *ID 24297718
@@ -29,7 +30,9 @@ public class Main {
             System.out.println(student_results);
         }
 
-        ArrayList<Student> studentsBelowThreshold = unit.getMarksBelowThreshold(40,students);
+        int threshold_mark = getThresholdMark();
+
+        ArrayList<Student> studentsBelowThreshold = unit.getMarksBelowThreshold(threshold_mark,students);
         System.out.println("+++++++++++++++++++++++++++++++++++");
         System.out.println("Students Below Threshold");
         if(studentsBelowThreshold.size() > 0) {
@@ -49,6 +52,25 @@ public class Main {
             System.out.println("No Student Below Threshold");
         }
 
+    }
+
+    public static int getThresholdMark() {
+        int user_input = 0;
+        try {
+
+            System.out.println("\n\nGet Marks Below a threshold ");
+            System.out.println("======================================================");
+            System.out.println("\n" +
+                    "Enter the mark threshhold");
+
+            Scanner sc = new Scanner(System.in);
+            user_input = sc.nextInt();
+
+        }catch (Exception e){
+            e.printStackTrace();
+            getThresholdMark();
+        }
+        return user_input;
     }
 
     public static Unit readExcelFile() {
