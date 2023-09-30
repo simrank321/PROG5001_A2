@@ -1,3 +1,6 @@
+/*AUTHOR Simran Kaur
+ *ID 24297718
+ */
 public class Student {
     String first_name,last_name,student_id ="";
 

@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /*AUTHOR Simran Kaur
  *ID 24297718
@@ -12,10 +13,10 @@ public class Main {
 
     public static void main(String [] args){
 
-        readExcelFile();
+   Unit unit =  readExcelFile();
     }
 
-    public static void readExcelFile() {
+    public static Unit readExcelFile() {
 
         //set the line separator
         String line = "";
@@ -26,10 +27,12 @@ public class Main {
         //set the line index to 1 for reading the first line
         int line_index = 1;
 
+        Unit unit;
         String unit_title = null;
+        ArrayList<Student> students = new ArrayList<>();
 
         try {
-            //parsing the Excel CSV file into BufferedReader class constructor
+            //parsing the excel CSV file into BufferedReader class constructor
             BufferedReader br = new BufferedReader(new FileReader(FILE_NAME));
 
 
@@ -71,6 +74,7 @@ public class Main {
                             Double.parseDouble(student[4]),
                             Double.parseDouble(student[5]));
 
+                    students.add(student1);
 
                     //concatenate the student data  to a string
                     String student_results = "Student [" + student1.getFirstName() +
@@ -97,6 +101,8 @@ public class Main {
             e.printStackTrace();
         }
 
+        unit = new Unit(unit_title,students);
 
+        return  unit;
     }
 }
