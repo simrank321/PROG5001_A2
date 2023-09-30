@@ -49,7 +49,7 @@ function getTop5Students():
         for j from i + 1 to length(students) - 1:
         //compare the two students' total marks
         //if the total marks of the first of the two students is lower, swap the student positions
-            if students[i].total_marks < student_results[j].total_marks):
+            if students[i].total_marks < students[j].total_marks):
                 swap(students[i], students[j])
             end if
          end for
@@ -67,3 +67,45 @@ function getTop5Students():
     end loop
 
     return top_5_students
+
+    =======================================================================
+
+
+    Algorithm - Get Bottom 5 students
+    Description : - To get the bottom 5 students with the lowest total marks
+    Assumption : - We have an array list of students with their total marks
+
+    function getBottom5Students():
+    //list of students
+    students
+
+   // array list to store students with the lowest marks
+        bottom_5_students = []
+
+       //organise the student data to get the students organised from the highest mark to the lowest
+         //loop to get a student at a position
+           for i from 0 to length(students) - 1:
+           //loop to get a student at the next position
+               for j from i + 1 to length(students) - 1:
+               //compare the two students' total marks
+               //if the total marks of the first of the two students is lower, swap the student positions
+                   if students[i].total_marks < students[j].total_marks):
+                       swap(students[i], students[j])
+                   end if
+                end for
+           end for
+
+         //set the count to 5 positions below the total students size
+        count = length(students) - 5;
+
+       // loop to get the five bottom students
+        for i from count to length(students):
+
+       // add student  to bottom_5_students
+            add students[i] to bottom_5_students
+
+         end for
+
+        return bottom_5_students
+
+    =======================================================================
