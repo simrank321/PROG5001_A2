@@ -1,3 +1,6 @@
+/*AUTHOR Simran Kaur
+ *ID 24297718
+ */
 public class StudentMarks{
     double assignment_1,assignment_2,assignment_3 =0.0;
     double total_marks =0.0;
@@ -12,7 +15,8 @@ public class StudentMarks{
         return total_marks;
     }
 
-    public void setTotalMarks(double total_marks) {
+    public void setTotalMarks() {
+        double total_marks  =  this.assignment_1 + this.assignment_2+ this.assignment_3;
         this.total_marks = total_marks;
     }
 
