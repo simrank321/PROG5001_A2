@@ -14,8 +14,10 @@ public class Main {
 
     public static void main(String [] args){
 
+        //read excel file
    Unit unit =  readExcelFile();
 
+   //get the students list with their total marks
    ArrayList<Student> students = unit.getStudents();
 
         for (Student student1 :students ) {
@@ -30,6 +32,8 @@ public class Main {
             System.out.println(student_results);
         }
 
+
+        //Get the students below threshold mark
         int threshold_mark = getThresholdMark();
 
         ArrayList<Student> studentsBelowThreshold = unit.getMarksBelowThreshold(threshold_mark,students);
@@ -51,6 +55,29 @@ public class Main {
         }else{
             System.out.println("No Student Below Threshold");
         }
+
+
+        //getting top 5 performing students
+        ArrayList<Student> top5Students = unit.getTop5Students(students);
+        System.out.println("\n\n+++++++++++++++++++++++++++++++++++\n");
+        System.out.println("top 5 Students ");
+        if(top5Students.size() > 0) {
+            for (Student student1 : top5Students) {
+                //concatenate the student data  to a string
+                String student_results = "Student  [" + student1.getFirstName() +
+                        ", " + student1.getLastName() +
+                        ", " + student1.getStudentID() +
+                        ", [" + student1.studentMarks.getAssignment1() + ", " +
+                        " " + student1.studentMarks.getAssignment2() + "," +
+                        "  " + student1.studentMarks.getAssignment3() + "] Total = " + student1.studentMarks.getTotalMarks() + " ]";
+                //print student details on command line
+                System.out.println(student_results);
+            }
+
+        }else{
+            System.out.println("No top 5 students");
+        }
+
 
     }
 
