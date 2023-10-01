@@ -9,7 +9,7 @@ import java.util.Scanner;
  */
 public class Main {
 
-    //set file path for the excel file
+    //set file path for the Excel file
     static String FILE_NAME = "./prog5001_students_grade_2022.csv";
     static Unit unit;
 
@@ -19,6 +19,7 @@ public class Main {
         //read Excel file
          unit = readExcelFile();
 
+         //call the getUserInput method to get the user value from the menu
         getUserInput();
 
 
@@ -38,9 +39,11 @@ public class Main {
                 "\n" +
                 "Enter 3 to get bottom 5 lowest performing students");
 
+        //reading user input from terminal
         Scanner sc = new Scanner(System.in);
         user_input = sc.nextInt();
 
+        //running the methods based on the user input
         runSelectedMenuItem(user_input);
         }
         catch(Exception e){
@@ -52,9 +55,10 @@ public class Main {
 
     public static void runSelectedMenuItem(int menu_item) {
 
+        //get an array list of students
         ArrayList<Student> students = unit.getStudents();
 
-
+       //use a switch condition to determine the user need
         switch (menu_item) {
             case 0:
             //get the student's list with their total marks
