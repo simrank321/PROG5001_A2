@@ -9,42 +9,87 @@ import java.util.Scanner;
  */
 public class Main {
 
-    //set file path for the excel file
+    //set file path for the Excel file
     static String FILE_NAME = "./prog5001_students_grade_2022.csv";
+    static Unit unit;
+
 
     public static void main(String[] args) {
 
-        //read excel file
-        Unit unit = readExcelFile();
+        //read Excel file
+         unit = readExcelFile();
 
-        //get the students list with their total marks
-        ArrayList<Student> students = unit.getStudents();
-        printStudents( students);
-
-
-
-        //Get the students below threshold mark
-        int threshold_mark = getThresholdMark();
-
-        ArrayList<Student> studentsBelowThreshold = unit.getMarksBelowThreshold(threshold_mark, students);
-        printStudentBelowThreshold(studentsBelowThreshold);
-
-
-        //getting top 5 performing students
-        ArrayList<Student> top5Students = unit.getTop5Students(students);
-        printTop5Students(top5Students);
-
-
-        //getting top 5 performing students
-        ArrayList<Student> bottom5Students = unit.getBottom5Students(students);
-        printBottom5Students(bottom5Students);
+         //call the getUserInput method to get the user value from the menu
+        getUserInput();
 
 
     }
 
+    public static int getUserInput() {
+        int user_input = 0;
+        try{
+        System.out.println("\n\nMenu");
+        System.out.println("======================================================");
+        System.out.println("\n" +
+                "Enter 0 to print the student list and marks" +
+                "\n" +
+                "Enter 1 to get marks below a threshhold" +
+                "\n" +
+                "Enter 2 to get the top 5 best students " +
+                "\n" +
+                "Enter 3 to get bottom 5 lowest performing students");
 
+        //reading user input from terminal
+        Scanner sc = new Scanner(System.in);
+        user_input = sc.nextInt();
 
-//@TODO SET  MENU TO GET USER INPUT FOR MENU
+        //running the methods based on the user input
+        runSelectedMenuItem(user_input);
+        }
+        catch(Exception e){
+          System.out.println (" Sorry. You have entered the wrong input!! Try again.");
+            getUserInput();
+        }
+        return user_input;
+    }
+
+    public static void runSelectedMenuItem(int menu_item) {
+
+        //get an array list of students
+        ArrayList<Student> students = unit.getStudents();
+
+       //use a switch condition to determine the user need
+        switch (menu_item) {
+            case 0:
+            //get the student's list with their total marks
+            printStudents( students);
+            getUserInput();
+            break;
+            case 1:
+                //Get the students below threshold mark
+                int threshold_mark = getThresholdMark();
+
+                ArrayList<Student> studentsBelowThreshold = unit.getMarksBelowThreshold(threshold_mark, students);
+                printStudentBelowThreshold(studentsBelowThreshold);                getUserInput();
+                break;
+            case 2:
+                //getting top 5 performing students
+                ArrayList<Student> top5Students = unit.getTop5Students(students);
+                printTop5Students(top5Students);
+                getUserInput();
+                break;
+            case 3:
+                //getting top 5 performing students
+                ArrayList<Student> bottom5Students = unit.getBottom5Students(students);
+                printBottom5Students(bottom5Students);
+                getUserInput();
+                break;
+            default:
+                System.out.println("You have entered a wrong value");
+                getUserInput();
+                break;
+        }
+    }
 
     //GET THRESHOLD MARK FROM USER INPUT
     public static int getThresholdMark() {
